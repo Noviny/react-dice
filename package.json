@@ -3,12 +3,18 @@
   "version": "0.0.1",
   "description": "A drop-in react component for creating dice, with a robust information set to allow easy use.",
   "main": "index.js",
+  "keywords": [
+    "dice",
+    "dungeons and dragons",
+    "react"
+  ],
   "peerDependencies": {
     "react": "^15.1.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Ben Conolly",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/noviny/reactdice.git"
+  },
   "license": "MIT"
 }

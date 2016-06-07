@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { rollDice } from '../diceLogic';
+import { newRoll } from '../diceLogic';
 
 class StaticRoll extends Component {
 
@@ -7,18 +7,17 @@ class StaticRoll extends Component {
     this.setState({
       total: 0,
     })
-    this.getNewTotal = this.getNewTotal.bind(this);
   };
 
   getNewTotal () {
     this.setState({
-      total: rollDice(this.props.dieNum, this.props.dieType, this.props.bonus),
+      total: newRoll(this.props.dieCount, this.props.dieType, this.props.bonus),
     });
   };
 
   render () {
     return (
-      <span>{this.props.dieNum}d{this.props.dieType}+{this.props.bonus}<button onClick={this.getNewTotal.bind(this)}>Roll</button> Total: {this.state.total}</span>
+      <span>{this.props.dieCount}d{this.props.dieType}+{this.props.bonus}<button onClick={this.getNewTotal.bind(this)}>Roll</button> Total: {this.state.total}</span>
     )
   };
 };
