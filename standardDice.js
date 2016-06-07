@@ -1,4 +1,4 @@
-import { newRoll } from './logic';
+import { newRoll } from './diceLogic';
 
 exports.d4 = newRoll(4)
 exports.d6 = newRoll(6)

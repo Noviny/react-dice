@@ -1,6 +1,9 @@
+import { makeRoll, rollDice } from './diceLogic';
 import DieRoll from './components/DieRoll';
-import { newRoll, rollDice } from './logic';
+import StaticRoll from './components/StaticRoll'
 
-exports.DieRoll = DieRoll
-exports.newRoll = newRoll
+
+exports.makeRoll = makeRoll
 exports.rollDice = rollDice
+exports.DieRoll = DieRoll
+exports.StaticRoll = StaticRoll
