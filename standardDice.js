@@ -1,9 +1,27 @@
 import { newRoll } from './diceLogic';
 
 
-exports.d4 = (bonus) => { return newRoll(1, 4, 0) + (bonus || 0) };
-exports.d6 = (bonus) => { return newRoll(1, 6, 0) + (bonus || 0) };
-exports.d8 = (bonus) => { return newRoll(1, 8, 0) + (bonus || 0) };
-exports.d10 = (bonus) => { return newRoll(1, 10, 0) + (bonus || 0) };
-exports.d12 = (bonus) => { return newRoll(1, 12, 0) + (bonus || 0) };
-exports.d20 = (bonus) => { return newRoll(1, 20, 0) + (bonus || 0) };
+exports.d4 = (bonus) => {
+  if (!bonus) var bonus = 0
+  return newRoll(1, 4, bonus).total
+};
+exports.d6 = (bonus) => {
+  if (!bonus) var bonus = 0
+  return newRoll(1, 6, bonus).total
+};
+exports.d8 = (bonus) => {
+  if (!bonus) var bonus = 0
+  return newRoll(1, 8, bonus).total
+};
+exports.d10 = (bonus) => {
+  if (!bonus) var bonus = 0
+  return newRoll(1, 10, bonus).total
+};
+exports.d12 = (bonus) => {
+  if (!bonus) var bonus = 0
+  return newRoll(1, 12, bonus).total
+};
+exports.d20 = (bonus) => {
+  if (!bonus) var bonus = 0
+  return newRoll(1, 20, bonus).total
+};

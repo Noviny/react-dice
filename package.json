@@ -1,6 +1,6 @@
 {
   "name": "react-dice",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A drop-in react component for creating dice, with a robust information set to allow easy use.",
   "main": "index.js",
   "keywords": [
@@ -14,7 +14,10 @@
   "author": "Ben Conolly",
   "repository": {
     "type": "git",
-    "url": "http://github.com/noviny/reactdice.git"
+    "url": "http://github.com/noviny/react-dice.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "elemental": "^0.5.14"
+  }
 }

@@ -1,29 +1,29 @@
-const rollDice = (dieCount, dieType) => {
-	let results = []
-	for (var i = 0; i < dieCount; i++) {
-		results.push(Math.ceil(Math.random() * dieType));
-	}
-	return results;
-}
-
-const getTotal = (results, bonus) => {
-	return results.reduce((a, b) => a + b) + bonus;
-};
-
 const newRoll = (dieCount, dieType, bonus) => {
-	let results = rollDice(dieCount, dieType);
-	return getTotal(results, bonus);
+	let resultsArr = []
+	for (var i = 0; i < dieCount; i++) {
+		resultsArr.push(Math.ceil(Math.random() * dieType));
+	}
+	let total = resultsArr.reduce((a, b) => a + b) + bonus;
+	return {total, resultsArr};
 };
 
 const generateRoll = (dieCount, dieType, bonus) => {
-	return {
+	const roll = {
 		dieCount: dieCount,
 		dieType: dieType,
 		bonus: bonus,
 		lastRoll: 0,
 	};
+
+	roll.get = () => {
+		const ourRoll = newRoll(roll.dieCount, roll.dieType, roll.bonus);
+		roll.lastRoll = ourRoll.total;
+		roll.resultsArr = ourRoll.resultsArr;
+		return roll.lastRoll;
+	};
+
+	return roll;
 };
 
 exports.generateRoll = generateRoll;
 exports.newRoll = newRoll;
-exports.rollDice = rollDice

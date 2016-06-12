@@ -33,7 +33,7 @@ class SimpleDie extends Component {
 
   rollDice () {
     var dice = this.state.dice;
-    dice.lastRoll = newRoll(dice.dieCount, dice.dieType, dice.bonus);
+    dice.get();
     this.setState({ dice: dice });
   };
 
