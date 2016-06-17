@@ -41,7 +41,7 @@ dieCount
 dieType
 bonus
 lastRoll
-resultsArr:
+resultsArr
 ```
 
 ### <StaticRoll />
