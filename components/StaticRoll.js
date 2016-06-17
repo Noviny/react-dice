@@ -37,11 +37,11 @@ class StaticRoll extends Component {
           this.state.resultsArr.map((result, i, a) => {
             var resultNumStyle = {};
             var resultNumStyle = (result === this.props.dieType) ?
-            Object.assign({}, resultNumStyle, maxResultStyle) :
-            resultNumStyle;
+              Object.assign({}, resultNumStyle, maxResultStyle) :
+              resultNumStyle;
             var resultNumStyle = (result === 1) ?
-            Object.assign({}, resultNumStyle, minResultStyle) :
-            resultNumStyle;
+              Object.assign({}, resultNumStyle, minResultStyle) :
+              resultNumStyle;
 
             if (i === a.length -1) {
               return <span key={i} style={resultNumStyle}>{`${result}/${this.props.dieType}`}</span>
