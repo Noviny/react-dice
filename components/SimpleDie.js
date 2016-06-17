@@ -21,13 +21,13 @@ class SimpleDie extends Component {
 
   updateDieType (newValue) {
     var dice = this.state.dice;
-    dice.dieCount = parseInt(newValue);
+    dice.dieType = parseInt(newValue);
     this.setState({ dice: dice });
   };
 
   updateBonus (newValue) {
     var dice = this.state.dice;
-    dice.dieCount = parseInt(newValue);
+    dice.bonus = parseInt(newValue);
     this.setState({ dice: dice });
   };
 
