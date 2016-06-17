@@ -13,6 +13,7 @@ const generateRoll = (dieCount, dieType, bonus) => {
 		dieType: dieType,
 		bonus: bonus,
 		lastRoll: 0,
+		resultsArr: Array.from({ length: dieCount }, (v, k) => 0),
 	};
 
 	roll.get = () => {
