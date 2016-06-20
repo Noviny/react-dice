@@ -31,5 +31,30 @@ const generateRoll = (dieCount, dieType, bonus) => {
 	return rollObj;
 };
 
+// combineRolls can be used in conjunction with generate rolls, or by passing
+// in a collection of objects like what generateRoll returns, however we can
+// also pass in our own array of dice.
+
+exports.combineRolls = (arrayOfRolls) => {
+	const multiRollObj = {
+		rolls: arrayOfRolls,
+		lastRoll: 0,
+		resultsArr: [],
+	};
+
+	multiRollObj.get = () => {
+		multiRollObj.lastRoll = 0;
+		multiRollObj.resultsArr = [];
+		multiRollObj.rolls.map(rollObj => {
+			const makeRoll = newRoll(rollObj.dieCount, rollObj.dieType, rollObj.bonus);
+			multiRollObj.lastRoll += makeRoll.total;
+			multiRollObj.resultsArr = multiRollObj.resultsArr.concat(makeRoll.resultsArr);
+		})
+		return multiRollObj.lastRoll;
+	};
+
+	return multiRollObj;
+}
+
 exports.generateRoll = generateRoll;
 exports.newRoll = newRoll;
