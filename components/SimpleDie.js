@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { generateRoll, newRoll } from '../diceLogic';
 import { maxResultStyle, minResultStyle } from '../constants/styles';
+import ResultsArray from './ResultsArray'
 
 class SimpleDie extends Component {
 
@@ -73,24 +74,8 @@ class SimpleDie extends Component {
         />
         <button onClick={this.rollDice.bind(this)}>Roll</button>
         <span> - Total: <span style={totalStyle} >{dice.lastRoll}</span></span>
-        {this.props.showResultsArr ?
-          <span>
-          <br />
-            {dice.resultsArr.map((result, i, a) => {
-              var resultNumStyle = {};
-              var resultNumStyle = (result === dice.dieType) ?
-              Object.assign({}, resultNumStyle, maxResultStyle) :
-              resultNumStyle;
-              var resultNumStyle = (result === 1) ?
-              Object.assign({}, resultNumStyle, minResultStyle) :
-              resultNumStyle;
-
-              if (i === a.length -1) {
-                return <span key={i} style={resultNumStyle} >{`${result}/${dice.dieType}`}</span>
-              }
-              return <span key={i} style={resultNumStyle} >{`${result}/${dice.dieType}, `}</span>
-            })}
-          </span>
+        {this.props.showResultsArr
+          ? <ResultsArray diceArray={dice.resultsArr} />
           : null
         }
       </span>

@@ -1,29 +1,34 @@
 const newRoll = (dieCount, dieType, bonus) => {
 	let resultsArr = []
 	for (var i = 0; i < dieCount; i++) {
-		resultsArr.push(Math.ceil(Math.random() * dieType));
+		resultsArr.push({ type: dieType, value: Math.ceil( Math.random() * dieType) });
 	}
-	let total = resultsArr.reduce((a, b) => a + b) + bonus;
+	let total = bonus
+	resultsArr.forEach(result => {
+		total += result.value
+	});
 	return {total, resultsArr};
 };
 
 const generateRoll = (dieCount, dieType, bonus) => {
-	const roll = {
+	const rollObj = {
 		dieCount: dieCount,
 		dieType: dieType,
 		bonus: bonus,
 		lastRoll: 0,
-		resultsArr: Array.from({ length: dieCount }, (v, k) => 0),
+		resultsArr: Array.from({ length: dieCount }, (v, k) => {
+			return { type: dieType, value: 0 };
+		}),
 	};
 
-	roll.get = () => {
-		const ourRoll = newRoll(roll.dieCount, roll.dieType, roll.bonus);
-		roll.lastRoll = ourRoll.total;
-		roll.resultsArr = ourRoll.resultsArr;
-		return roll.lastRoll;
+	rollObj.get = () => {
+		const ourRoll = newRoll(rollObj.dieCount, rollObj.dieType, rollObj.bonus);
+		rollObj.lastRoll = ourRoll.total;
+		rollObj.resultsArr = ourRoll.resultsArr;
+		return rollObj.lastRoll;
 	};
 
-	return roll;
+	return rollObj;
 };
 
 exports.generateRoll = generateRoll;
