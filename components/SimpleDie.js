@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { generateRoll, newRoll } from '../diceLogic';
 import { maxResultStyle, minResultStyle } from '../constants/styles';
-import ResultsArray from './ResultsArray'
+import ResultsArray from './ResultsArray';
+import DiceDisplay from './DiceDisplay';
 
 class SimpleDie extends Component {
 
@@ -13,6 +14,9 @@ class SimpleDie extends Component {
         this.props.bonus
       )
     })
+
+    this.updateDieCount = this.updateDieCount.bind(this);
+    this.updateDieType = this.updateDieType.bind(this);
   };
 
   updateDieCount (newValue) {
@@ -51,26 +55,28 @@ class SimpleDie extends Component {
     }
 
     return (
-      <span>
-        <input
-          type="number"
-          value={dice.dieCount}
-          onChange={(e) => { this.updateDieCount(e.target.value) }}
-          style={{ maxWidth: '30px', textAlign: 'center', border: 'none' }}
+      <div
+        className='dieDisplay'
+        style={{
+          border: '1px solid #cccccc',
+          background: '#e6e6e6',
+          padding: '1px',
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          display: 'inline-block',
+        }}
+      >
+        <DiceDisplay
+          dieCount={dice.dieCount}
+          dieType={dice.dieType}
+          updateDieCount={this.updateDieCount}
+          updateDieType={this.updateDieType}
         />
-      d
-        <input
-          type="number"
-          value={dice.dieType}
-          onChange={(e) => { this.updateDieType(e.target.value) }}
-          style={{ maxWidth: '30px', textAlign: 'center', border: 'none' }}
-        />
-      +
         <input
           type="number"
           value={dice.bonus}
           onChange={(e) => { this.updateBonus(e.target.value) }}
-          style={{ maxWidth: '30px', textAlign: 'center', border: 'none' }}
+          style={{ maxWidth: '2rem', textAlign: 'center', border: 'none', background: 'rgba(0, 0, 0, 0)' }}
         />
         <button onClick={this.rollDice.bind(this)}>Roll</button>
         <span> - Total: <span style={totalStyle} >{dice.lastRoll}</span></span>
@@ -78,7 +84,7 @@ class SimpleDie extends Component {
           ? <ResultsArray diceArray={dice.resultsArr} />
           : null
         }
-      </span>
+      </div>
     )
   };
 };
