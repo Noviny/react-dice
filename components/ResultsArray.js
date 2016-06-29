@@ -7,8 +7,7 @@ class ResultsArray extends Component {
     const diceArray = this.props.diceArray;
     return (
       <span>
-        <br />
-        {diceArray.map((die, i, a) => {
+        results: {diceArray.map((die, i, a) => {
           var resultNumStyle = {};
           var resultNumStyle = (die.value === die.type) ?
           Object.assign({}, resultNumStyle, maxResultStyle) :
