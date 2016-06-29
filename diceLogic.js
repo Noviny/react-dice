@@ -40,13 +40,19 @@ exports.combineRolls = (arrayOfRolls) => {
 		rolls: arrayOfRolls,
 		lastRoll: 0,
 		resultsArr: [],
+		bonus: 0,
 	};
 
+	multiRollObj.rolls.forEach(roll => {
+		multiRollObj.bonus += roll.bonus;
+		roll.bonus = 0;
+	});
+
 	multiRollObj.get = () => {
-		multiRollObj.lastRoll = 0;
+		multiRollObj.lastRoll = multiRollObj.bonus;
 		multiRollObj.resultsArr = [];
 		multiRollObj.rolls.map(rollObj => {
-			const makeRoll = newRoll(rollObj.dieCount, rollObj.dieType, rollObj.bonus);
+			const makeRoll = newRoll(rollObj.dieCount, rollObj.dieType, 0);
 			multiRollObj.lastRoll += makeRoll.total;
 			multiRollObj.resultsArr = multiRollObj.resultsArr.concat(makeRoll.resultsArr);
 		})
