@@ -32,7 +32,17 @@ class StaticRoll extends Component {
     };
 
     return (
-      <span>
+      <div
+        className='dieDisplay'
+        style={{
+          border: '1px solid #cccccc',
+          background: '#e6e6e6',
+          padding: '1px',
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          display: 'inline-block',
+        }}
+      >
         {this.props.dieCount}d{this.props.dieType}+{this.props.bonus}
         <button onClick={this.getNewResults.bind(this)}>Roll</button> Total: <span style={totalStyle} >{this.state.total}</span>
         <br />
@@ -40,7 +50,7 @@ class StaticRoll extends Component {
           ? <ResultsArray diceArray={this.state.resultsArr} />
           : null
         }
-      </span>
+      </div>
     )
   };
 };
