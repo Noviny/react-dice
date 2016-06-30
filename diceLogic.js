@@ -1,4 +1,7 @@
-const newRoll = (dieCount, dieType, bonus) => {
+// newRoll falls back to a 1d20 roll if no other parameters are provided.
+// It returns an object of the total and the resultsArr. The form newRoll().total
+// is a common usage.
+const newRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
 	let resultsArr = []
 	for (var i = 0; i < dieCount; i++) {
 		resultsArr.push({ type: dieType, value: Math.ceil( Math.random() * dieType) });
@@ -10,7 +13,9 @@ const newRoll = (dieCount, dieType, bonus) => {
 	return {total, resultsArr};
 };
 
-const generateRoll = (dieCount, dieType, bonus) => {
+// Both generateRoll and combineRolls create and then modify an object, which
+// they return when the function is done.
+exports.generateRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
 	const rollObj = {
 		dieCount: dieCount,
 		dieType: dieType,
@@ -20,47 +25,43 @@ const generateRoll = (dieCount, dieType, bonus) => {
 			return { type: dieType, value: 0 };
 		}),
 	};
-
 	rollObj.get = () => {
 		const ourRoll = newRoll(rollObj.dieCount, rollObj.dieType, rollObj.bonus);
 		rollObj.lastRoll = ourRoll.total;
 		rollObj.resultsArr = ourRoll.resultsArr;
 		return rollObj.lastRoll;
 	};
-
 	return rollObj;
 };
 
-// combineRolls can be used in conjunction with generate rolls, or by passing
+// combineRolls can be used in conjunction with generateRolls, or by passing
 // in a collection of objects like what generateRoll returns, however we can
 // also pass in our own array of dice.
-
-exports.combineRolls = (arrayOfRolls) => {
-	const multiRollObj = {
-		rolls: arrayOfRolls,
+exports.combineRolls = (arrayOfRollObjs, bonus = 0) => {
+	const dice = {
+		rolls: arrayOfRollObjs,
 		lastRoll: 0,
 		resultsArr: [],
-		bonus: 0,
+		bonus: bonus,
 	};
-
-	multiRollObj.rolls.forEach(roll => {
-		multiRollObj.bonus += roll.bonus;
+	dice.rolls.forEach(roll => {
+		roll.dieCount = roll.dieCount || 1;
+		roll.dieType = roll.dieType || 6;
+		if (roll.bonus) dice.bonus += roll.bonus;
 		roll.bonus = 0;
 	});
-
-	multiRollObj.get = () => {
-		multiRollObj.lastRoll = multiRollObj.bonus;
-		multiRollObj.resultsArr = [];
-		multiRollObj.rolls.map(rollObj => {
+	// get becomes a permanent method on the object
+	dice.get = () => {
+		dice.lastRoll = dice.bonus;
+		dice.resultsArr = [];
+		dice.rolls.forEach(rollObj => {
 			const makeRoll = newRoll(rollObj.dieCount, rollObj.dieType, 0);
-			multiRollObj.lastRoll += makeRoll.total;
-			multiRollObj.resultsArr = multiRollObj.resultsArr.concat(makeRoll.resultsArr);
+			dice.lastRoll += makeRoll.total;
+			dice.resultsArr = dice.resultsArr.concat(makeRoll.resultsArr);
 		})
-		return multiRollObj.lastRoll;
+		return dice.lastRoll;
 	};
-
-	return multiRollObj;
+	return dice;
 }
 
-exports.generateRoll = generateRoll;
 exports.newRoll = newRoll;
