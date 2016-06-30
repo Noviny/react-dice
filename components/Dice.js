@@ -6,9 +6,15 @@ import DiceDisplay from './DiceDisplay'
 
 class Dice extends Component {
   componentWillMount () {
-    this.setState({
-      dice: combineRolls(this.props.rollsArray)
-    });
+    if (this.props.diceObj) {
+      this.setState({
+        dice: combineRolls(this.props.diceObj.rolls, this.props.diceObj.bonus),
+      })
+    } else {
+      this.setState({
+        dice: combineRolls(this.props.rollsArray, this.props.bonus),
+      });
+    }
     this.updateDieCount = this.updateDieCount.bind(this)
     this.updateDieType = this.updateDieType.bind(this)
     this.updateBonus = this.updateBonus.bind(this)
@@ -59,17 +65,21 @@ class Dice extends Component {
         {dice.rolls.map((rollObj, i) => {
           if (this.state.editRoll !== i) {
             return (
-              <span key={i} onClick={() => {this.setState({ editRoll: i })}}>{`${rollObj.dieCount}d${rollObj.dieType} + `}</span>
+              <span key={i} onClick={() => {this.setState({ editRoll: i })}}>
+                {`${rollObj.dieCount}d${rollObj.dieType} + `}
+              </span>
             )
           }
-          return <DiceDisplay
-            dieCount={rollObj.dieCount}
-            dieType={rollObj.dieType}
-            updateDieCount={this.updateDieCount}
-            updateDieType={this.updateDieType}
-            key={i}
-            keyS={i}
-          />
+          return (
+            <DiceDisplay
+              dieCount={rollObj.dieCount}
+              dieType={rollObj.dieType}
+              updateDieCount={this.updateDieCount}
+              updateDieType={this.updateDieType}
+              key={i}
+              keyS={i}
+            />
+          )
         })}
         <input
           type="number"
@@ -81,7 +91,7 @@ class Dice extends Component {
         <br/>
         {this.props.showResultsArr
           ? <ResultsArray diceArray={dice.resultsArr} />
-        : null
+          : null
         }
       </div>
     )
