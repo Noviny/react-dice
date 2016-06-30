@@ -1,10 +1,7 @@
-import { generateRoll, newRoll } from './diceLogic';
-import StaticRoll from './components/StaticRoll'
-import SimpleDie from './components/SimpleDie'
+import { generateRoll, newRoll, combineRolls } from './diceLogic';
 import Dice from './components/Dice'
 
 exports.generateRoll = generateRoll
 exports.newRoll = newRoll
-exports.StaticRoll = StaticRoll
-exports.SimpleDie = SimpleDie
+exports.combineRolls = combineRolls
 exports.Dice = Dice
