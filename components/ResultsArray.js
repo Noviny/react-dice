@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { maxResultStyle, minResultStyle } from '../constants/styles';
 
 class ResultsArray extends Component {
-
   render () {
     const diceArray = this.props.diceArray;
     return (
