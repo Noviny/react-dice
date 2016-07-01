@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { combineRolls } from '../diceLogic';
+import { rolls } from '../diceLogic';
 import { maxResultStyle, minResultStyle, inputStyle } from '../constants/styles';
-import ResultsArray from './ResultsArray'
+import Results from './Results'
 import DiceDisplay from './DiceDisplay'
 
 class Dice extends Component {
   componentWillMount () {
-    if (this.props.diceObj) {
+    if (this.props.dice) {
       this.setState({
-        dice: combineRolls(this.props.diceObj.rolls, this.props.diceObj.bonus),
+        dice: rolls(this.props.dice.rolls, this.props.dice.bonus),
       })
     } else {
       this.setState({
-        dice: combineRolls(this.props.rollsArray, this.props.bonus),
+        dice: rolls(this.props.rolls, this.props.bonus),
       });
     }
     this.updateDieCount = this.updateDieCount.bind(this)
@@ -89,8 +89,8 @@ class Dice extends Component {
         />
         <button onClick={this.rollDice.bind(this)}>Roll</button> Total: {dice.lastRoll}
         <br/>
-        {this.props.showResultsArr
-          ? <ResultsArray diceArray={dice.resultsArr} />
+        {this.props.showResults
+          ? <Results diceArray={dice.resultsArr} />
           : null
         }
       </div>

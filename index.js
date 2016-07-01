@@ -1,7 +1,7 @@
-import { generateRoll, newRoll, combineRolls } from './diceLogic';
-import Dice from './components/Dice'
+import { roll, newRoll, rolls } from './diceLogic';
+// import Dice from './components/Dice'
 
-exports.generateRoll = generateRoll
+exports.roll = roll
 exports.newRoll = newRoll
-exports.combineRolls = combineRolls
-exports.Dice = Dice
+exports.rolls = rolls
+exports.Dice = require('./components/Dice')

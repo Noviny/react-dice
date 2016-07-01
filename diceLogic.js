@@ -13,9 +13,9 @@ const newRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
 	return {total, resultsArr};
 };
 
-// Both generateRoll and combineRolls create and then modify an object, which
+// Both roll and rolls create and then modify an object, which
 // they return when the function is done.
-exports.generateRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
+exports.roll = (dieCount = 1, dieType = 20, bonus = 0) => {
 	const rollObj = {
 		dieCount: dieCount,
 		dieType: dieType,
@@ -34,12 +34,12 @@ exports.generateRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
 	return rollObj;
 };
 
-// combineRolls can be used in conjunction with generateRolls, or by passing
-// in a collection of objects like what generateRoll returns, however we can
+// rolls can be used in conjunction with rolls, or by passing
+// in a collection of objects like what roll returns, however we can
 // also pass in our own array of dice.
-exports.combineRolls = (arrayOfRollObjs, bonus = 0) => {
+exports.rolls = (rolls, bonus = 0) => {
 	const dice = {
-		rolls: arrayOfRollObjs,
+		rolls: rolls,
 		lastRoll: 0,
 		resultsArr: [],
 		bonus: bonus,
