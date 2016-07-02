@@ -48,7 +48,7 @@ exports.rolls = (rolls, bonus = 0) => {
 		roll.dieCount = roll.dieCount || 1;
 		roll.dieType = roll.dieType || 6;
 		if (roll.bonus) dice.bonus += roll.bonus;
-		roll.bonus = 0;
+		delete roll.bonus;
 	});
 	// get becomes a permanent method on the object
 	dice.get = () => {
