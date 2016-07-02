@@ -6,15 +6,15 @@ module.exports = {
 	],
 	output: {
 		path: __dirname + '/dist/',
-		filename: 'bundle.min.js',
+		filename: 'react-dice.js',
 	},
-	plugins: [// Plugins for Webpack
-		new webpack.optimize.UglifyJsPlugin({ // Optimize the JavaScript...
-			compress: {
-				warnings: false, // ...but do not show warnings in the console (there is a lot of them)
-			},
-		}),
-	],
+	// plugins: [// Plugins for Webpack
+	// 	new webpack.optimize.UglifyJsPlugin({ // Optimize the JavaScript...
+	// 		compress: {
+	// 			warnings: false, // ...but do not show warnings in the console (there is a lot of them)
+	// 		},
+	// 	}),
+	// ],
 	module: {
 		loaders: [
 			{
@@ -27,5 +27,4 @@ module.exports = {
 			},
 		],
 	},
-	devtool: 'source-map',
 };
