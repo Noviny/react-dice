@@ -2,15 +2,15 @@
 // It returns an object of the total and the results. The form newRoll().total
 // is a common usage.
 const newRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
-	let results = []
+	let results = [];
 	for (var i = 0; i < dieCount; i++) {
-		results.push({ type: dieType, value: Math.ceil( Math.random() * dieType) });
+		results.push({ type: dieType, value: Math.ceil(Math.random() * dieType) });
 	}
-	let total = bonus
+	let total = bonus;
 	results.forEach(result => {
-		total += result.value
+		total += result.value;
 	});
-	return {total, results};
+	return { total, results };
 };
 
 // Both roll and rolls create and then modify an object, which
@@ -58,10 +58,10 @@ exports.rolls = (rolls, bonus = 0) => {
 			const makeRoll = newRoll(rollObj.dieCount, rollObj.dieType, 0);
 			dice.lastRoll += makeRoll.total;
 			dice.results = dice.results.concat(makeRoll.results);
-		})
+		});
 		return dice.lastRoll;
 	};
 	return dice;
-}
+};
 
 exports.newRoll = newRoll;

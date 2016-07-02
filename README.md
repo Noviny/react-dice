@@ -27,7 +27,7 @@ If you realise that the dice you have are no longer what you want, you can click
 ```
 
 ## How does it work (and how can I make it work for me)
-The `rolls` prop is where most of the heavylifting is going on. It accepts an array of objects that conform to the following shape:
+The `rolls` prop is where most of the heavy lifting is going on. It accepts an array of objects that conform to the following shape:
 
 ```
 {
@@ -98,7 +98,7 @@ var ourResults = newRoll(3, 6, 5)
 
 Which will store for us both a total and an array of the individual dice values in the same format as the results in our `roll` object.
 
-Our final logic function is `rolls()`, which servese the same purpose as `roll()` but for sets of multiple dice types. Unlike `roll()` or `newRoll()`, `rolls` does not take in dieCount or dieType as arguments, but instead takes in an array of roll objects as its first argument, and a bonus as an optional second argument. As such `rolls()` could be called like so:
+Our final logic function is `rolls()`, which serves the same purpose as `roll()` but for sets of multiple dice types. Unlike `roll()` or `newRoll()`, `rolls` does not take in dieCount or dieType as arguments, but instead takes in an array of roll objects as its first argument, and a bonus as an optional second argument. As such `rolls()` could be called like so:
 
 ```
 var complexRoll = rolls({
