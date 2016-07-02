@@ -90,7 +90,7 @@ class Dice extends Component {
         <button onClick={this.rollDice.bind(this)}>Roll</button> Total: {dice.lastRoll}
         <br/>
         {this.props.showResults
-          ? <Results diceArray={dice.resultsArr} />
+          ? <Results diceArray={dice.results} />
           : null
         }
       </div>
