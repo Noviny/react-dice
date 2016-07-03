@@ -18,7 +18,7 @@ class Dice extends Component {
 		this.updateDieCount = this.updateDieCount.bind(this);
 		this.updateDieType = this.updateDieType.bind(this);
 		this.updateBonus = this.updateBonus.bind(this);
-		this.rollDice.bind(this);
+		this.rollDice = this.rollDice.bind(this);
 	};
 
 	updateDieCount (newValue, i) {
