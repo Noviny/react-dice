@@ -6,20 +6,16 @@ if (process.env.NODE_ENV !== 'production') {
 	entry = [
 		'webpack-dev-server/client?http://localhost:8080', // Needed for hot reloading
 		'webpack/hot/only-dev-server', // See above
-		'./index.js',
-	];
-} else {
-	entry = [
-		'./index.js',
+		'./src/app.js',
 	];
 }
 
 module.exports = {
 	entry: entry,
 	output: {
-		path: __dirname + '/dist/',
-		publicPath: '/dice/',
-		filename: 'react-dice.js',
+		path: __dirname + '/dist',
+		publicPath: '/',
+		filename: 'app.js',
 	},
 	// plugins: [// Plugins for Webpack
 	// 	new webpack.optimize.UglifyJsPlugin({ // Optimize the JavaScript...
