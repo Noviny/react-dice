@@ -1,14 +1,14 @@
 exports.maxResultStyle = {
-  color: 'green',
-}
+	color: 'green',
+};
 
 exports.minResultStyle = {
-  color: 'red',
-}
+	color: 'red',
+};
 
 exports.inputStyle = {
-  maxWidth: '3srem',
-  textAlign: 'right',
-  border: 'none',
-  background: 'rgba(0, 0, 0, 0)'
-}
+	maxWidth: '3srem',
+	textAlign: 'right',
+	border: 'none',
+	background: 'rgba(0, 0, 0, 0)',
+};
