@@ -1,3 +1,13 @@
+## 1.0.1
+* 1.0.0 release's component's roll button did not work. This has been resolved
+
+## 1.0.0
+* Near complete rewrite
+* Exported components replaced with a singular `<Dice />` component with an updated API.
+* Logic functions renamed for both clarity and brevity.
+* Styles added to contain `dice` component, it now behaves as an `inline-block` element.
+* Readme completely rewritten to reflect changes.
+
 ## 0.1.0
 * Add Changelog
 * Add results array to SimpleDie and StaticRoll, which are turned off by default
