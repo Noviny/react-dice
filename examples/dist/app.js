@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "288b47a05d676975ae5b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "be6ff5ed7723d32f1252"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8205,33 +8205,25 @@
 		_react2.default.createElement(
 			'div',
 			null,
-			_react2.default.createElement('h2', null),
+			_react2.default.createElement(
+				'p',
+				null,
+				'This is the most complete component, which is showing the array of results as well as the total on roll.'
+			),
 			_react2.default.createElement(_index.Dice, {
 				rolls: [(0, _index.roll)(3, 6), (0, _index.roll)(1, 8), (0, _index.roll)(1, 10, 12)],
 				showResults: true
 			})
 		),
 		_react2.default.createElement(
-			'div',
+			'p',
 			null,
-			_react2.default.createElement(_index.Dice, {
-				rolls: [{ dieCount: 2, dieType: 6, bonus: 0 }, { dieCount: 3, dieType: 8, bonus: 5 }, { dieCount: 1, dieType: 10, bonus: 3 }],
-				bonus: 6
-			})
+			'You can click on any dice to toggle that dice into an editable mode.'
 		),
 		_react2.default.createElement(
-			'div',
+			'p',
 			null,
-			_react2.default.createElement(_index.Dice, {
-				rolls: [{ dieCount: 2, dieType: 6 }, { dieCount: 3, dieType: 8 }, { dieCount: 1, dieType: 10 }]
-			})
-		),
-		_react2.default.createElement(
-			'div',
-			null,
-			_react2.default.createElement(_index.Dice, {
-				rolls: [{ dieCount: 2 }, { dieType: 8 }, {}]
-			})
+			'Currently adding or removing dice is not possible through the UI.'
 		),
 		_react2.default.createElement(
 			'div',
