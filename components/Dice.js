@@ -33,9 +33,14 @@ class Dice extends Component {
 		this.setState({ dice });
 	};
 
-	updateBonus (newValue) {
+	// selectDie (i) {
+	// 	console.log(i);
+	// 	this.setState({ editRoll: i });
+	// }
+
+	updateBonus (e) {
 		var dice = this.state.dice;
-		dice.bonus = parseInt(newValue);
+		dice.bonus = parseInt(e.target.value);
 		this.setState({ dice });
 	};
 
@@ -66,7 +71,7 @@ class Dice extends Component {
 				{dice.rolls.map((rollObj, i) => {
 					if (this.state.editRoll !== i) {
 						return (
-							<span key={i} onClick={() => {this.setState({ editRoll: i })}}>
+							<span key={i} onClick={() => { this.setState({ editRoll: i }) }}>
 								{`${rollObj.dieCount}d${rollObj.dieType} + `}
 							</span>
 						);
@@ -85,7 +90,7 @@ class Dice extends Component {
 				<input
 					type="number"
 					value={dice.bonus}
-					onChange={(e) => { this.updateBonus(e.target.value) }}
+					onChange={this.updateBonus}
 					style={inputStyle}
 				/>
 				<button onClick={this.rollDice}>Roll</button> Total: {dice.lastRoll}
