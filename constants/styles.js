@@ -7,7 +7,7 @@ exports.minResultStyle = {
 };
 
 exports.inputStyle = {
-	maxWidth: '3srem',
+	maxWidth: '2rem',
 	textAlign: 'right',
 	border: 'none',
 	background: 'rgba(0, 0, 0, 0)',
