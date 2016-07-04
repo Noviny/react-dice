@@ -6,13 +6,15 @@ ReactDOM.render(
 	<div>
 		<h1>A quick demonstration of react-dice</h1>
 		<div>
-			<h2></h2>
+			<p>This is the most complete component, which is showing the array of results as well as the total on roll.</p>
 			<Dice
 				rolls={[roll(3, 6), roll(1, 8), roll(1, 10, 12)]}
 				showResults
 			/>
 		</div>
-		<div>
+		<p>You can click on any dice to toggle that dice into an editable mode.</p>
+		<p>Currently adding or removing dice is not possible through the UI.</p>
+		{/* <div>
 			<Dice
 				rolls={[
 					{ dieCount: 2, dieType: 6, bonus: 0 },
@@ -39,7 +41,7 @@ ReactDOM.render(
 					{},
 				]}
 			/>
-		</div>
+		</div>*/}
 		<div>
 			<Dice rolls={[roll()]} />
 		</div>
