@@ -42,6 +42,7 @@ ReactDOM.render(
 				]}
 			/>
 		</div>*/}
+		<p>For another dice example, here is the simplest</p>
 		<div>
 			<Dice rolls={[roll()]} />
 		</div>
