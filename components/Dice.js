@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { rolls } from '../diceLogic';
-import { inputStyle } from '../constants/styles';
+import { inputStyle, maxResultStyle, minResultStyle } from '../constants/styles';
 import Results from './Results';
-import DiceDisplay from './DiceDisplay';
+import EditDice from './EditDice';
+import DiceView from './DiceView';
 
 class Dice extends Component {
 	componentWillMount () {
@@ -19,6 +20,7 @@ class Dice extends Component {
 		this.updateDieType = this.updateDieType.bind(this);
 		this.updateBonus = this.updateBonus.bind(this);
 		this.rollDice = this.rollDice.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	};
 
 	updateDieCount (newValue, i) {
@@ -53,8 +55,20 @@ class Dice extends Component {
 		});
 	};
 
+	handleClick (i) {
+		this.setState({ editRoll: i });
+	};
+
 	render () {
 		const dice = this.state.dice;
+		var resultStyle = {};
+
+		if (dice.lastRoll === dice.rolls.length + dice.bonus) {
+			resultStyle = Object.assign(resultStyle, maxResultStyle);
+		}
+		if (dice.lastRoll === 1 + dice.bonus) {
+			resultStyle = Object.assign(resultStyle, minResultStyle);
+		}
 
 		return (
 			<div
@@ -71,13 +85,17 @@ class Dice extends Component {
 				{dice.rolls.map((rollObj, i) => {
 					if (this.state.editRoll !== i) {
 						return (
-							<span key={i} onClick={() => { this.setState({ editRoll: i }) }}>
-								{`${rollObj.dieCount}d${rollObj.dieType} + `}
-							</span>
+							<DiceView
+								dieCount={rollObj.dieCount}
+								dieType={rollObj.dieType}
+								handleClick={this.handleClick}
+								key={i}
+								keyS={i}
+							/>
 						);
 					}
 					return (
-						<DiceDisplay
+						<EditDice
 							dieCount={rollObj.dieCount}
 							dieType={rollObj.dieType}
 							updateDieCount={this.updateDieCount}
@@ -93,7 +111,7 @@ class Dice extends Component {
 					onChange={this.updateBonus}
 					style={inputStyle}
 				/>
-				<button onClick={this.rollDice}>Roll</button> Total: {dice.lastRoll}
+				<button onClick={this.rollDice}>Roll</button> Total: <span style={resultStyle} >{dice.lastRoll}</span>
 				<br/>
 				{this.props.showResults
 					? <Results diceArray={dice.results} />

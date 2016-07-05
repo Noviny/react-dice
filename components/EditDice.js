@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inputStyle } from '../constants/styles';
 
-class DiceDisplay extends Component {
+class EditDice extends Component {
 	componentWillMount () {
 		this.updateCount = this.updateCount.bind(this);
 		this.updateType = this.updateType.bind(this);
@@ -35,4 +35,4 @@ class DiceDisplay extends Component {
 	}
 }
 
-module.exports = DiceDisplay;
+module.exports = EditDice;
