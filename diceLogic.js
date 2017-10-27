@@ -13,6 +13,8 @@ const newRoll = (dieCount = 1, dieType = 20, bonus = 0) => {
 	return { total, results };
 };
 
+// random comment for testing git thing
+
 // Both roll and rolls create and then modify an object, which
 // they return when the function is done.
 exports.roll = (dieCount = 1, dieType = 20, bonus = 0) => {
